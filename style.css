@@ -128,7 +128,7 @@ figure img
 
 #mainSection
 {
-	width: 90%;
+	width: 90%; height: 750px;
 	margin: auto;
 	font-family: 'futurist_fixed-widthregular', sans-serif;
 	letter-spacing: -7px
@@ -185,7 +185,6 @@ section aside a
 footer
 {
 	background-image: url(images/bouton.jpg);
-	margin-top: 50px;
 	border-bottom: 0.01px black solid;
 }
 
