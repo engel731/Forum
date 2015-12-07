@@ -24,7 +24,7 @@
     font-style: normal;
 }
 
-/*Body ------------------------------------------------------*/
+/* Body ------------------------------------------------------*/
 
 body
 {
@@ -33,7 +33,7 @@ body
 	margin: 0px;
 }
 
-/*Header -----------------------------------------------------*/
+/* Header -----------------------------------------------------*/
 
 header
 {
@@ -54,13 +54,13 @@ header h1
 
 /* Navigation -------------------------------------------*/
 
-header nav 
+header nav
 {
 	width: 90%;
 	margin: auto;
 	text-align: center;
-	font-family: 'futurist_fixed-widthregular', sans-serif;
-	letter-spacing: -10px
+	font-family: 'futurist_fixed-widthregular', sans-serif; /* A modifier */
+	letter-spacing: -10px; /* A modifier */
 }
 
 header nav ul
@@ -91,10 +91,10 @@ header nav li a:hover
 {
 	background-image: url(images/bouton_a.jpg);
 	border-style: outset;
-	box-shadow: 0px 0px 0px 0px black;
+	box-shadow: 0px 0px 0px 0px black; /* A modifier */
 }
 
-/*Display user -----------------------------------------*/
+/* Display user -----------------------------------------*/
 
 #displayUser  
 {
@@ -110,28 +110,14 @@ header nav li a:hover
 	margin-left: 10px;
 }
 
-/*figure REMOVE ---------------------------------------------- */
-
-figure
-{
-	width: 1000px;
-	margin: auto;
-}
-
-figure img
-{
-	width: 1000px;
-	box-shadow: 2px 2px black;
-}
-
-/*Section ----------------------------------------------*/
+/* Section ----------------------------------------------*/
 
 #mainSection
 {
 	width: 90%; height: 750px;
 	margin: auto;
-	font-family: 'futurist_fixed-widthregular', sans-serif;
-	letter-spacing: -7px
+	font-family: 'futurist_fixed-widthregular', sans-serif; /* A modifier */
+	letter-spacing: -7px; /* A modifier */
 }
 
 #titre
@@ -180,12 +166,12 @@ section aside a
 	color: red;
 }
 
-/*Pied de page ----------------------------------------------*/
+/* Pied de page ----------------------------------------------*/
 
 footer
 {
 	background-image: url(images/bouton.jpg);
-	border-bottom: 0.01px black solid;
+	border-bottom: 0.01px black solid; /* A modifier */
 }
 
 footer p
