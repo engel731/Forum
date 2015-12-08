@@ -10,6 +10,17 @@
 		return true;
 	}
 
+	function getTooltype($data, $check, $msg) {
+		$tooltypes = array();
+
+		foreach($data as $key => $value) {
+			if(!$check[$key]($value))
+				array_push($tooltypes, $msg[$key]);
+		}
+		
+		return $tooltypes;
+	}
+
 	$checkMsg = array(
 
 	'titre' => function($titre) {
@@ -72,8 +83,20 @@
 		if(check($dataDiscussion, $checkDiscussion)) {
 			addDiscussion($dataDiscussion);
 			
-			if(check($dataMsg, $checkMsg))
+			if(check($dataMsg, $checkMsg)) 
 				addMsg($dataMsg);
+		} 
+		else {
+			$tooltypes = getTooltype($dataDiscussion, $checkDiscussion, array(
+				'titre'        => 'Le titre doit comporter au minimum 6 caractere',
+				'categorie'     => 'Cette categorie n\'existe pas',
+				'auteur'       => 'Vous devez vous connecter pour pouvoir poster un message'));
+
+			$tooltypes = getTooltype($dataMsg, $checkMsg, array(
+					'titre'        => 'Le titre doit comporter au minimum 6 caractere',
+					'contenue'     => 'Le contenue doit comporter au minimum 10 caractere',
+					'auteur'       => 'Vous devez vous connecter pour pouvoir poster un message',
+					'idDiscussion' => 'Cette discussion n\'existe pas'));
 		}
 	}
 

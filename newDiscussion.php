@@ -43,6 +43,11 @@
 						
 						<input type="submit" value="Envoyer"/>
 					</form>
+					<?php if(isset($tooltypes)) {
+						foreach ($tooltypes as $value) {
+							echo '<p>'.$value.'</p>';
+						}
+					}?>
 				</article>
 			</section>
 		</div>
