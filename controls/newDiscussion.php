@@ -37,16 +37,8 @@
 			return false;
 	},
 
-	'auteur' => function(){ return true; },
+	'auteur' => function(){ return true; });
 
-	'idDiscussion' => function($id) {
-		if(selectDiscussion(array('id' => $id)))
-			return true;
-		else
-			return false;
-	});
-
-	
 	$checkDiscussion = array(
 
 	'titre' => function($titre) {
@@ -72,31 +64,29 @@
 		$dataMsg = array(
 			'titre'        => $_POST['titre'], 
 			'contenue'     => $_POST['contenue'], 
-			'auteur'       => 'engel',
-			'idDiscussion' => generatId());
+			'auteur'       => 'engel');
 	
 		$dataDiscussion = array(
 			'titre'     => $_POST['titre'],
 			'categorie' => $categorie['titre'],
 			'auteur'    => 'engel');
 
-		if(check($dataDiscussion, $checkDiscussion)) {
-			addDiscussion($dataDiscussion);
-			
-			if(check($dataMsg, $checkMsg)) 
-				addMsg($dataMsg);
+		if(check($dataDiscussion, $checkDiscussion) && check($dataMsg, $checkMsg))
+		{
+			addDiscussion($dataDiscussion, $dataMsg);
 		} 
-		else {
+		else 
+		{
 			$tooltypes = getTooltype($dataDiscussion, $checkDiscussion, array(
 				'titre'        => 'Le titre doit comporter au minimum 6 caractere',
 				'categorie'     => 'Cette categorie n\'existe pas',
 				'auteur'       => 'Vous devez vous connecter pour pouvoir poster un message'));
 
 			$tooltypes = getTooltype($dataMsg, $checkMsg, array(
-					'titre'        => 'Le titre doit comporter au minimum 6 caractere',
-					'contenue'     => 'Le contenue doit comporter au minimum 10 caractere',
-					'auteur'       => 'Vous devez vous connecter pour pouvoir poster un message',
-					'idDiscussion' => 'Cette discussion n\'existe pas'));
+				'titre'        => 'Le titre doit comporter au minimum 6 caractere',
+				'contenue'     => 'Le contenue doit comporter au minimum 10 caractere',
+				'auteur'       => 'Vous devez vous connecter pour pouvoir poster un message',
+				'idDiscussion' => 'Cette discussion n\'existe pas'));
 		}
 	}
 

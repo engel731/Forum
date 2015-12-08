@@ -8,20 +8,6 @@
 		die('Erreur : '.$e->getMessage());
 	}
 
-	function addMsg($data) {
-		global $bdd;
-		
-		$req = $bdd->prepare('INSERT INTO msg(titre, contenue, auteur, idDiscussion) VALUES(:titre, :contenue, :auteur, :idDiscussion)');
-		$req->execute($data);
-	}
-
-	function addDiscussion($data) {
-		global $bdd;
-		
-		$req = $bdd->prepare('INSERT INTO discussion(titre, categorie, auteur) VALUES(:titre, :categorie, :auteur)');
-		$req->execute($data);
-	}
-
 	function selectCategorie($tableau, $key = null) {
 		global $bdd;
 
@@ -52,13 +38,16 @@
 		}
 	}
 
-	function generatId() {
+	function addDiscussion($dataDiscussion, $dataMsg) {
 		global $bdd;
+		
+		$req = $bdd->prepare('INSERT INTO discussion(titre, categorie, auteur) VALUES(:titre, :categorie, :auteur)');
+		$req->execute($dataDiscussion);
 
-		$reponse = $bdd->query('SELECT id FROM discussion');
+		$discussion = selectDiscussion(array('titre' => $dataDiscussion['titre']));
+		$dataMsg['idDiscussion'] = $discussion['id'];
 
-		for ($i = 2; $i < $reponse->fetch(); $i++) { 
-			return $i;
-		}
+		$req = $bdd->prepare('INSERT INTO msg(titre, contenue, auteur, idDiscussion) VALUES(:titre, :contenue, :auteur, :idDiscussion)');
+		$req->execute($dataMsg);
 	}
 ?>
